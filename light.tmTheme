@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>name</key>
+	<string>Solarized Simple</string>
+	<key>author</key>
+	<string>Nick Miller</string>
+	<key>settings</key>
+	<array>
+		<dict>
+			<key>settings</key>
+			<dict>
+				<key>background</key>
+				<string>#fdf6e3</string>
+				<key>caret</key>
+				<string>#586e75</string>
+				<key>foreground</key>
+				<string>#586e75</string>
+				<key>lineHighlight</key>
+				<string>#eee8d5</string>
+				<key>selection</key>
+				<string>#eee8d5</string>
+				<key>selectionBorder</key>
+				<string>#00000000</string>
+				<key>misspelling</key>
+				<string>#dc322f</string>
+				<key>shadow</key>
+				<string>#cccccc00</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Comments</string>
+			<key>scope</key>
+			<string>comment</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#93a1a1</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Classes</string>
+			<key>scope</key>
+			<string>entity.name.class, variable.type.js, entity.other.inherited-class, support.class.builtin, support.class - (support.class.js), storage.type - (storage.type.function, storage.type.class, storage.type.js, storage.type.accessor)</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#6d73c2</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Storage, Tags, Keywords, Language constants</string>
+			<key>scope</key>
+			<string>storage - (storage.type), storage.type.function, storage.type.class, storage.type.js, storage.type.accessor, entity.name.tag, keyword, variable.language, constant.language</string>
+			<key>settings</key>
+			<dict>
+				<key>fontStyle</key>
+				<string>bold</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Debolding</string>
+			<key>scope</key>
+			<string>keyword.name.ini, storage.type.function.arrow, keyword.operator.assignment, keyword.operator.logical, keyword.operator.arithmetic, keyword.operator.spread, keyword.operator.comparison, keyword.operator.relational, keyword.operator.ternary, keyword.operator.bitwise, keyword.operator.key, keyword.operator.string, keyword.operator.star.sql</string>
+			<key>settings</key>
+			<dict>
+				<key>fontStyle</key>
+				<string>normal</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Numerics</string>
+			<key>scope</key>
+			<string>constant.numeric</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#2aa198</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Strings</string>
+			<key>scope</key>
+			<string>string - (string.unquoted), punctuation.definition.quote.ini</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#b58900</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>CSS classes</string>
+			<key>scope</key>
+			<string>source.css entity.other</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#b58900</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>CSS IDs</string>
+			<key>scope</key>
+			<string>source.css entity.other.attribute-name.id</string>
+			<key>settings</key>
+			<dict>
+				<key>fontStyle</key>
+				<string>bold</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Illegal</string>
+			<key>scope</key>
+			<string>invalid.illegal</string>
+			<key>settings</key>
+			<dict>
+				<key>background</key>
+				<string>#d2322d</string>
+				<key>foreground</key>
+				<string>#ffffff</string>
+			</dict>
+		</dict>
+	</array>
+</dict>
+</plist>
