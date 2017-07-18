@@ -1,5 +1,4 @@
 # solarized-simple
-
 A simpler Solarized theme.
 
 ## Why
@@ -14,6 +13,11 @@ I generally dislike my editor looking like confetti, so I've removed a lot of th
 
 (The colors referenced above are the original Solarized colors from http://ethanschoonover.com/solarized)
 
-Currently supports the following editors:
+## Who
+Currently supports these editors:
 - Sublime Text 3
 - TextMate, maybe
+
+## Example
+PHP:
+![alt text](https://raw.githubusercontent.com/nick-j-miller/solarized-simple/master/samples/PHP.png)
