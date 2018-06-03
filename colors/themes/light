@@ -1,0 +1,18 @@
+# Settings:
+foreground: base00
+background: base3
+caret: base00
+lineHighlight: base2
+selection: base2
+selectionBorder: transparent
+misspelling: red
+shadow: transparent
+
+# Scopes:
+comments.foreground: base1
+classes.foreground: violet
+numerics.foreground: cyan
+strings.foreground: yellow
+css.classes.foreground: yellow
+illegal.foreground: red
+illegal.background: base2

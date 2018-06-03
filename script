@@ -1,0 +1,56 @@
+#!/usr/bin/env bash
+
+declare -A COLORS
+
+# Determines whether $1 is empty or a comment.
+is_empty() {
+    if [[ $1 = \#* ]] || [ -z $1 ]; then
+        true
+    else
+        false
+    fi
+}
+
+# Read base color (name, value) pairs into array:
+while read key value; do
+    if is_empty $key; then
+        continue;
+    fi
+
+    key=${key%:*}
+    COLORS["${key}"]="${value}"
+done < colors/base
+
+# Process templates:
+for template in "templates"/*; do
+    app=$(basename "${template%.*}")
+    ext=${template##*.}
+
+    for colorset in "colors/themes"/*; do
+        theme=$(basename "${colorset}")
+        out_dir="build/${app}"
+        mkdir -p "${out_dir}"
+        out_file="${out_dir}/${theme}.${ext}"
+        printf "Creating \"${out_file}\" from (${app}, ${theme})\n"
+
+        cp "${template}" "${out_file}"
+
+        # Theme colors:
+        while read key value; do
+            if is_empty $key; then
+                continue;
+            fi
+
+            key=${key%:*}
+
+            # Replace:
+            pattern="@[[:<:]]${key}[[:>:]]"
+            color="${COLORS[$value]}"
+
+            sed -i '' "s/${pattern}/${color}/g" "${out_file}"
+        done < "${colorset}"
+
+        # Theme name:
+        sed -i '' "s/@themeName/Solarized Simple: ${theme^}/g" "${out_file}"
+    done
+done
