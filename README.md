@@ -20,4 +20,4 @@ Currently supports these editors:
 
 ## Example
 PHP:
-![alt text](https://raw.githubusercontent.com/nick-j-miller/solarized-simple/master/samples/PHP.png)
+![alt text](https://raw.githubusercontent.com/jadefish/solarized-simple/master/samples/PHP.png)
