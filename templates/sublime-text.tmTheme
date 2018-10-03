@@ -44,7 +44,7 @@
             <key>name</key>
             <string>Classes</string>
             <key>scope</key>
-            <string>entity.name.class, entity.name.type, variable.type.js, entity.other.inherited-class, support.class.builtin, support.class - (support.class.js), storage.type - (storage.type.function, storage.type.class, storage.type.js, storage.type.accessor, meta.function.declaration.go)</string>
+            <string>entity.name - (entity.name.tag, entity.name.function), variable.type.js, entity.other.inherited-class, support.class - (support.class.js), storage.type - (storage.type.function, storage.type.class, storage.type.js, storage.type.accessor, meta.function.declaration.go), support.type</string>
             <key>settings</key>
             <dict>
                 <key>foreground</key>
@@ -55,7 +55,7 @@
             <key>name</key>
             <string>Storage, Tags, Keywords, Language constants</string>
             <key>scope</key>
-            <string>storage, entity.name.tag, keyword - keyword.operator.symbol, constant.language, variable.language</string>
+            <string>storage - (storage.type.c, storage.type.go, storage.type.php, storage.modifier.reference), entity.name.tag, keyword - (keyword.operator.symbol, keyword.operator.arithmetic, keyword.operator.php, keyword.operator.assignment.c, keyword.operator.c, keyword.operator.assignment.php, keyword.operator.bitwise.php, keyword.operator.key.php, keyword.operator.logical.php), constant.language, variable.language</string>
             <key>settings</key>
             <dict>
                 <key>fontStyle</key>
