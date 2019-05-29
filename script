@@ -1,56 +1,58 @@
-#!/usr/bin/env bash
+#!/usr/bin/env ruby
 
-declare -A COLORS
+require 'yaml'
+require 'fileutils'
 
-# Determines whether $1 is empty or a comment.
-is_empty() {
-    if [[ $1 = \#* ]] || [ -z $1 ]; then
-        true
-    else
-        false
-    fi
-}
+THEMES_DIRECTORY = 'colors/themes'.freeze
+TEMPLATES_DIRECTORY = 'templates'.freeze
+BASE_OUT_DIR = 'build'.freeze
+BASE_COLORS_FILENAME = 'colors/base.yaml'.freeze
 
-# Read base color (name, value) pairs into array:
-while read key value; do
-    if is_empty $key; then
-        continue;
-    fi
+def base_colors
+    File.open(BASE_COLORS_FILENAME) do |filename|
+        YAML.load(filename)
+    end
+end
 
-    key=${key%:*}
-    COLORS["${key}"]="${value}"
-done < colors/base
+def themes
+    Dir.glob("#{THEMES_DIRECTORY}/*.yaml").map do |filename|
+        name = File.basename(filename, File.extname(filename))
+        contents = File.open(filename) { |f| YAML.load(f) }
 
-# Process templates:
-for template in "templates"/*; do
-    app=$(basename "${template%.*}")
-    ext=${template##*.}
+        [name, contents]
+    end.to_h
+end
 
-    for colorset in "colors/themes"/*; do
-        theme=$(basename "${colorset}")
-        out_dir="build/${app}"
-        mkdir -p "${out_dir}"
-        out_file="${out_dir}/${theme}.${ext}"
-        printf "Creating \"${out_file}\" from (${app}, ${theme})\n"
+def process_template(template)
+    ext = File.extname(template)
+    app = File.basename(template, ext)
 
-        cp "${template}" "${out_file}"
+    themes.each do |theme, theme_data|
+        out_dir = File.join(BASE_OUT_DIR, app)
+        out_file = File.join(out_dir, "#{theme}#{ext}")
 
-        # Theme colors:
-        while read key value; do
-            if is_empty $key; then
-                continue;
-            fi
+        puts "Creating #{out_file} from (#{app}, #{theme})"
 
-            key=${key%:*}
+        FileUtils.mkdir_p(out_dir)
+        FileUtils.cp(template, out_file)
 
-            # Replace:
-            pattern="@[[:<:]]${key}[[:>:]]"
-            color="${COLORS[$value]}"
+        in_content = File.read(out_file)
 
-            sed -i '' "s/${pattern}/${color}/g" "${out_file}"
-        done < "${colorset}"
+        theme_data.each do |k, v|
+            next if k.empty?
 
-        # Theme name:
-        sed -i '' "s/@themeName/Solarized Simple: ${theme^}/g" "${out_file}"
-    done
-done
+            pattern = /@#{k}\b/
+            color = base_colors[v]
+
+            in_content = in_content.gsub(pattern, color)
+        end
+
+        in_content.gsub!('@themeName', "Solarized Simple: #{theme.capitalize}")
+
+        File.open(out_file, 'w') { |file| file.write(in_content) }
+    end
+end
+
+Dir.glob("#{TEMPLATES_DIRECTORY}/*").each do |template|
+    process_template(template)
+end

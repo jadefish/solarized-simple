@@ -27,6 +27,8 @@
                 <string>@misspelling</string>
                 <key>shadow</key>
                 <string>@shadow</string>
+                <key>blockCaret</key>
+                <string>@blockCaret</string>
             </dict>
         </dict>
         <dict>
