@@ -39,5 +39,5 @@ Currently supports these editors:
 - TextMate, maybe
 
 ## Example
-PHP:
-![alt text](https://raw.githubusercontent.com/jadefish/solarized-simple/master/samples/PHP.png)
+Ruby:
+![Ruby](https://raw.githubusercontent.com/jadefish/solarized-simple/master/samples/ruby.png)
